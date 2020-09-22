@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /*
  * Jaden Smith Case
@@ -11,9 +11,22 @@
  */
 
 // Your code:
+const jadenCase = (str) => {
+  const result = [];
+  const words = str.split(" ");
+  for (const word of words) {
+    const chars = word.split("");
+    chars[0] = chars[0].toUpperCase();
+    result.push(chars.join(""));
+  }
+  return result.join(" ");
+};
 
 //* Begin of tests
-const assert = require('assert');
+const assert = require("assert");
 
-assert.fail('You must write your own tests');
+assert.strictEqual(typeof jadenCase, "function");
+assert.strictEqual(jadenCase.length, 1);
+assert.strictEqual(jadenCase("my test"), "My Test");
+
 // End of tests */
