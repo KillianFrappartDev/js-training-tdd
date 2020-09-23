@@ -13,8 +13,15 @@
 const multiply = (a, b) => {
   if (a === 0 || b === 0) {
     return 0;
-  } else {
+  } else if (b > 0 && a > 0) {
     return a + multiply(a, b - 1);
+  } else {
+    if (b < 0) {
+      return -(a - multiply(a, b + 1));
+    } else {
+      const helper = -a;
+      return -(helper - multiply(a, b - 1));
+    }
   }
 };
 
@@ -32,7 +39,7 @@ assert.strictEqual(multiply(123, 0), 0);
 assert.strictEqual(multiply(34, 78), 2652);
 assert.strictEqual(multiply(0, -230), 0);
 assert.strictEqual(multiply(0, 0), 0);
-// assert.strictEqual(multiply(123, -22), -2706);
-// assert.strictEqual(multiply(-22, 123), -2706);
-// assert.strictEqual(multiply(-22, -123), 2706);
+assert.strictEqual(multiply(123, -22), -2706);
+assert.strictEqual(multiply(-22, -123), 2706);
+assert.strictEqual(multiply(-22, 123), -2706);
 // End of tests */
