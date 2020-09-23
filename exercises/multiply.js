@@ -15,37 +15,29 @@ const multiply = (a, b) => {
   }
 
   let isPositive;
-  let isDecrementing;
-  let result = 0;
-  let counter = a;
-
   switch (true) {
-    case a > 0 && b > 0:
-      isPositive = true;
+    case a > 0:
+      b > 0 ? (isPositive = true) : (isPositive = false);
       break;
 
-    case a < 0 && b < 0:
-      isPositive = true;
+    case a < 0:
+      b < 0 ? (isPositive = true) : (isPositive = false);
       break;
 
     default:
-      isPositive = false;
-      console.log("FALSE");
+      console.log("ERROR SWITCH");
       break;
   }
 
-  a > 0 ? (isDecrementing = true) : (isDecrementing = false);
+  let result = 0;
+  let counter = Math.abs(a);
 
-  while (a !== 0) {
-    result += b;
-    isDecrementing ? a-- : a++;
+  while (counter !== 0) {
+    isPositive ? (result += Math.abs(b)) : (result -= Math.abs(b));
+    counter--;
   }
 
-  if (isPositive) {
-    return result;
-  } else {
-    return -result;
-  }
+  return result;
 };
 
 //* Begin of tests
